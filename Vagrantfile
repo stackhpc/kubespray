@@ -130,7 +130,8 @@ Vagrant.configure("2") do |config|
         "bootstrap_os": SUPPORTED_OS[$os][:bootstrap_os],
         "local_release_dir" => $local_release_dir,
         "download_run_once": "False",
-        "kube_network_plugin": $network_plugin
+        "kube_network_plugin": $network_plugin,
+        "ansible_python_interpreter": "/opt/bin/python"
       }
 
       config.vm.network :private_network, ip: ip
@@ -142,7 +143,7 @@ Vagrant.configure("2") do |config|
       end
 
       # Disable swap for each vm
-      config.vm.provision "shell", inline: "swapoff -a"
+      # config.vm.provision "shell", inline: "swapoff -a"
 
       if $kube_node_instances_with_disks
         # Libvirt
