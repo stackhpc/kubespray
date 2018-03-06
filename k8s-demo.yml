@@ -1,0 +1,5 @@
+---
+- hosts: k8s-01
+  roles:
+  - k8s-demo
+...
