@@ -28,8 +28,8 @@
 
 - name: Create systemd unit file
   template:
-    src: activate.swap.j2
-    dest: /etc/systemd/system/activate.swap
+    src: var-vm-swapfile1.swap.j2
+    dest: /etc/systemd/system/var-vm-swapfile1.swap
     owner: root
     group: root
     mode: 0644
@@ -37,7 +37,7 @@
 
 - name: Enable systemctl
   command:
-    systemctl enable --now activate.swap
+    systemctl enable --now var-vm-swapfile1.swap
   when: swapfile_size != false
   become: yes
 
