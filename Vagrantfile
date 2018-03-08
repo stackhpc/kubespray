@@ -130,8 +130,7 @@ Vagrant.configure("2") do |config|
         "bootstrap_os": SUPPORTED_OS[$os][:bootstrap_os],
         "local_release_dir" => $local_release_dir,
         "download_run_once": "False",
-        "kube_network_plugin": $network_plugin,
-        "ansible_python_interpreter": "/opt/bin/python"
+        "kube_network_plugin": $network_plugin
       }
 
       config.vm.network :private_network, ip: ip
@@ -165,7 +164,7 @@ Vagrant.configure("2") do |config|
           if File.exist?(File.join(File.dirname($inventory), "hosts"))
             ansible.inventory_path = $inventory
           end
-          ansible.sudo = true
+          ansible.become = true
           ansible.limit = "all"
           ansible.host_key_checking = false
           ansible.raw_arguments = ["--forks=#{$num_instances}", "--flush-cache"]
