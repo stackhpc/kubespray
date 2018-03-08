@@ -1,5 +1,0 @@
----
-- hosts: k8s-cluster
-  roles:
-  - coreos.swapfile
-...
