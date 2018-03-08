@@ -1,5 +1,0 @@
----
-swapfile_path: /var/vm
-swapfile_location: '{{ swapfile_path }}/swapfile1'
-swapfile_size: 1024MB
-swapfile_swappiness: 10 
