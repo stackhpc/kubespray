@@ -1,5 +1,5 @@
 ---
 - hosts: k8s-01
   roles:
-  - k8s-demo
+  - k8s-inception-ansible
 ...

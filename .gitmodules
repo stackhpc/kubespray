@@ -2,5 +2,5 @@
 	path = roles/coreos-swapfile
 	url = git@github.com:brtknr/coreos-swapfile.git
 [submodule "roles/k8s-cat-ansible"]
-	path = roles/k8s-cat-ansible
+	path = roles/k8s-inception-ansible
 	url = git@github.com:brtknr/k8s-cat-ansible.git
