@@ -1,6 +1,0 @@
----
-inception_files:
-  - inception-deployment.yml
-  - inception-service.yml
-  - inception-client-job.yml
-...
