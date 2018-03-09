@@ -1,5 +1,5 @@
 ---
-- hosts: k8s-01
+- hosts: kube-master[0]
   roles:
   - k8s-inception-ansible
 ...
