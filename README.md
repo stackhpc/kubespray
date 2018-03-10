@@ -16,6 +16,21 @@ Quick Start
 
 To deploy the cluster you can use :
 
+### Memset on CentOS 7
+
+```bash
+sudo yum install -y epel-release
+sudo yum install -y python36
+python36 -m venv env
+. env/bin/activate
+pip install -r requirements.txt 
+cp -rp inventory/sample inventory/memset
+declare -a IPS=$(nmap -sn 172.17.8.0/24 | grep 'scan report' | tail -3 | cut -d' ' -f5 | paste -s -d" ")
+CONFIG_FILE=inventory/memset/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
+ansible-playbook -i inventory/memset/hosts.ini cluster.yml
+ansible-playbook -i inventory/memset/hosts.ini k8s-inception-demo.yml
+```
+
 ### Ansible
 
     # Copy ``inventory/sample`` as ``inventory/mycluster``
