@@ -24,6 +24,7 @@
 
 # To deploy locally on a machine with low RAM, it is nice to have some swap space
 - include: swapfile.yml
+  when: "{{ swapfile | default(false) }}"
 
 - hosts: k8s-cluster:etcd:calico-rr
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"

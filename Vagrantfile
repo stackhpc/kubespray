@@ -130,6 +130,7 @@ Vagrant.configure("2") do |config|
         "bootstrap_os": SUPPORTED_OS[$os][:bootstrap_os],
         "local_release_dir" => $local_release_dir,
         "download_run_once": "False",
+	"swapfile": "True",
         "kube_network_plugin": $network_plugin
       }
 
