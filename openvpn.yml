@@ -1,3 +1,11 @@
-- hosts: k8s-cluster
+- name: openvpn | server role
+  hosts:
+  - openvpn-server
   roles:
-    - juju4.openvpnclient
+  - { role: openvpn-setup/server }
+
+- name: openvpn | client role
+  hosts:
+  - openvpn-client
+  roles:
+  - { role: openvpn-setup/client }
