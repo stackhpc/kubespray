@@ -5,5 +5,5 @@
 	path = roles/k8s-inception-ansible
 	url = git@github.com:brtknr/k8s-cat-ansible.git
 [submodule "roles/openvpn-setup"]
-	path = roles/coreos-swapfile
+	path = roles/openvpn-setup
 	url = git@github.com:stackhpc/openvpn-setup.git
