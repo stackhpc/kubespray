@@ -14,10 +14,17 @@ If you have questions, join us on the [kubernetes slack](https://kubernetes.slac
 Hybrid  Memset on CentOS 7
 --------------------------
 
+- First, clone this repository and start two VMs locally using Vagrant.
 ```bash
 git clone --recurse-submodules git@github.com:stackhpc/kubespray.git
-ansible-playbook -i inventory/hybrid/hosts.ini cluster.yml
-ansible-playbook -i inventory/hybrid/hosts.ini k8s-inception-demo.yml
+vagrant up k8s-01 k8s-02 --no-provision
+```
+- Ensure that `k8s-01` and `k8s-02` are pointing to the corrent ports inside <inventory/hybrid/hosts.ini>.
+- Additionally, follow instructions on <roles/openvpn-setup-ansible/README.md> to configure your `~/.ssh/config`.
+- Finally, run the playbooks with superuser privilege using the `-b` flag.
+```bash
+ansible-playbook -i inventory/hybrid/hosts.ini cluster.yml -b
+ansible-playbook -i inventory/hybrid/hosts.ini k8s-inception-demo.yml -b
 ```
 
 Quick Start
