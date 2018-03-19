@@ -1,6 +1,6 @@
 ---
-- hosts: k8s-cluster
+- hosts: swapfile_enabled_hosts 
   roles:
-  - { role: coreos-swapfile, when: ansible_distribution == "CoreOS" }
+  - { role: coreos-swapfile-ansible, when: ansible_distribution == "CoreOS" }
   - { role: zaxos.swapfile-ansible-role, when: ansible_distribution == "CentOS" }
 ...

@@ -1,5 +1,1 @@
----
-- hosts: kube-master[0]
-  roles:
-  - k8s-inception-ansible
-...
+roles/k8s-inception-ansible/k8s-inception-demo.yml

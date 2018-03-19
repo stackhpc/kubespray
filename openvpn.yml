@@ -1,11 +1,1 @@
-- name: openvpn | server role
-  hosts:
-  - openvpn-server
-  roles:
-  - { role: openvpn-setup/server }
-
-- name: openvpn | client role
-  hosts:
-  - openvpn-client
-  roles:
-  - { role: openvpn-setup/client }
+roles/openvpn-setup-ansible/openvpn.yml

@@ -22,9 +22,11 @@
     ansible_ssh_pipelining: true
   gather_facts: true
 
-# To deploy locally on a machine with low RAM, it is nice to have some swap space
+# To deploy on swapfile_enabled_hosts when RAM is low, it is nice to have some swap space
 - include: swapfile.yml
-  when: "{{ swapfile | default(false) }}"
+
+# Openvpn 
+- include: openvpn.yml
 
 - hosts: k8s-cluster:etcd:calico-rr
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
