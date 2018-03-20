@@ -130,6 +130,7 @@ Vagrant.configure("2") do |config|
         "bootstrap_os": SUPPORTED_OS[$os][:bootstrap_os],
         "local_release_dir" => $local_release_dir,
         "download_run_once": "False",
+	"swapfile": "True",
         "kube_network_plugin": $network_plugin
       }
 
@@ -142,7 +143,7 @@ Vagrant.configure("2") do |config|
       end
 
       # Disable swap for each vm
-      config.vm.provision "shell", inline: "swapoff -a"
+      # config.vm.provision "shell", inline: "swapoff -a"
 
       if $kube_node_instances_with_disks
         # Libvirt
@@ -164,7 +165,7 @@ Vagrant.configure("2") do |config|
           if File.exist?(File.join(File.dirname($inventory), "hosts"))
             ansible.inventory_path = $inventory
           end
-          ansible.sudo = true
+          ansible.become = true
           ansible.limit = "all"
           ansible.host_key_checking = false
           ansible.raw_arguments = ["--forks=#{$num_instances}", "--flush-cache"]

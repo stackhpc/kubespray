@@ -1,0 +1,9 @@
+[submodule "roles/coreos-swapfile"]
+	path = roles/coreos-swapfile-ansible
+	url = git@github.com:stackhpc/coreos-swapfile-ansible.git
+[submodule "roles/k8s-inception-ansible"]
+	path = roles/k8s-inception-ansible
+	url = git@github.com:stackhpc/k8s-inception-ansible.git
+[submodule "roles/openvpn-setup-ansible"]
+	path = roles/openvpn-setup-ansible
+	url = git@github.com:stackhpc/openvpn-setup-ansible.git

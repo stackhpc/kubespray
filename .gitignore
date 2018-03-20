@@ -1,6 +1,8 @@
+# MacOS junk
+.DS_Store
+
 .vagrant
 *.retry
-inventory/vagrant_ansible_inventory
 inventory/group_vars/fake_hosts.yml
 inventory/host_vars/
 temp

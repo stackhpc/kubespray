@@ -28,6 +28,12 @@
       delegate_facts: True
       with_items: "{{ groups['k8s-cluster'] + groups['etcd'] }}"
 
+# To deploy on swapfile_enabled_hosts when RAM is low, it is nice to have some swap space
+- include: swapfile.yml
+
+# Openvpn 
+- include: openvpn.yml
+
 - hosts: k8s-cluster:etcd:calico-rr
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   roles:

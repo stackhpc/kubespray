@@ -53,13 +53,13 @@
   assert:
     that: ansible_memtotal_mb >= 1500
   ignore_errors: "{{ ignore_assert_errors }}"
-  when: inventory_hostname in groups['kube-master']
+  when: false # inventory_hostname in groups['kube-master']
 
 - name: Stop if memory is too small for nodes
   assert:
     that: ansible_memtotal_mb >= 1024
   ignore_errors: "{{ ignore_assert_errors }}"
-  when: inventory_hostname in groups['kube-node']
+  when: false # inventory_hostname in groups['kube-node']
 
 - name: Stop if ip var does not match local ips
   assert:
@@ -95,3 +95,4 @@
     that: ansible_kernel.split('-')[0]|version_compare('4.8', '>=')
   when: kube_network_plugin == 'cilium'
   ignore_errors: "{{ ignore_assert_errors }}"
+...

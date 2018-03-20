@@ -1,0 +1,6 @@
+---
+- hosts: swapfile_enabled_hosts 
+  roles:
+  - { role: coreos-swapfile-ansible, when: ansible_distribution == "CoreOS" }
+  - { role: zaxos.swapfile-ansible-role, when: ansible_distribution == "CentOS" }
+...
