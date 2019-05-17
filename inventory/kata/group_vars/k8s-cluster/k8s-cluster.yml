@@ -72,7 +72,7 @@ kube_users:
 
 # Choose network plugin (cilium, calico, contiv, weave or flannel. Use cni for generic cni plugin)
 # Can also be set to 'cloud', which lets the cloud provider setup appropriate routing
-kube_network_plugin: calico
+kube_network_plugin: flannel
 
 # Setting multi_networking to true will install Multus: https://github.com/intel/multus-cni
 kube_network_plugin_multus: false
@@ -146,10 +146,10 @@ dns_domain: "{{ cluster_name }}"
 
 ## Container runtime
 ## docker for docker, crio for cri-o and containerd for containerd.
-container_manager: docker
+container_manager: containerd
 
 ## Settings for containerized control plane (etcd/kubelet/secrets)
-etcd_deployment_type: docker
+etcd_deployment_type: host
 kubelet_deployment_type: host
 helm_deployment_type: host
 
