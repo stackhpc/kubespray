@@ -1,9 +1,4 @@
 ---
-- include_tasks: ../../container-engine/containerd/tasks/crictl.yml
-  when:
-    - container_manager == 'containerd'
-    - not skip_downloads|default(false)
-
 - include_tasks: download_prep.yml
   when:
     - not skip_downloads|default(false)
@@ -43,3 +38,8 @@
     - item.value.enabled
     - download_run_once
     - group_names | intersect(download.groups) | length
+
+- include_tasks: ../../container-engine/containerd/tasks/crictl.yml
+  when:
+    - container_manager in ['containerd']
+    - not skip_downloads|default(false)
