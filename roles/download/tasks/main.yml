@@ -1,7 +1,33 @@
 ---
+- name: Use cri-o for cri connection
+  set_fact:
+    cri_socket: /var/run/crio/crio.sock
+  when: container_manager == 'crio'
+
+- name: Use containerd for cri connetion
+  set_fact:
+    cri_socket: /var/run/containerd/containerd.sock
+  when: container_manager == 'containerd'
+
+- name: Use docker for cri connetion
+  set_fact:
+    cri_socket: /var/run/dockershim.sock
+  when: container_manager == 'docker'
+
 - include_tasks: download_prep.yml
   when:
     - not skip_downloads|default(false)
+
+- name: crictl | Download crictl
+  include_tasks: "download_file.yml"
+  vars:
+    download: "{{ download_defaults | combine(downloads.crictl) }}"
+  when:
+    - not skip_downloads|default(false)
+
+- include_tasks: ../../container-engine/containerd/tasks/crictl.yml
+  when:
+    - container_manager in ['containerd', 'crio']
 
 - include_tasks: kubeadm_images.yml
   when:
