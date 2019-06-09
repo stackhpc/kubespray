@@ -64,4 +64,3 @@
     - item.value.enabled
     - download_run_once
     - group_names | intersect(download.groups) | length
-
