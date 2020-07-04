@@ -14,9 +14,9 @@ registry_enabled: false
 
 # Metrics Server deployment
 metrics_server_enabled: true
-# metrics_server_kubelet_insecure_tls: true
+metrics_server_kubelet_insecure_tls: true
 # metrics_server_metric_resolution: 60s
-# metrics_server_kubelet_preferred_address_types: "InternalIP"
+metrics_server_kubelet_preferred_address_types: "InternalIP"
 
 # Rancher Local Path Provisioner
 local_path_provisioner_enabled: false
@@ -112,5 +112,5 @@ ingress_alb_enabled: false
 # alb_ingress_aws_debug: "false"
 
 # Cert manager deployment
-cert_manager_enabled: true
+# cert_manager_enabled: false
 # cert_manager_namespace: "cert-manager"
